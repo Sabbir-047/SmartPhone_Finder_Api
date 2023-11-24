@@ -1,4 +1,4 @@
-// fetch data
+// 1- fetch data
 const loadPhone = async (searchPhone = '13') => {
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchPhone}`);
     const data = await res.json();
@@ -15,7 +15,7 @@ const displayPhones = (phones) => {
     // clear the page before loading another data
     displayPhoneContainer.textContent = '';
 
-    // show phones dynamically
+    // 2- show phones dynamically
     phones.forEach(phone => {
         // console.log(phone);
         const phoneContainer = document.createElement('div');
@@ -36,11 +36,15 @@ const displayPhones = (phones) => {
         displayPhoneContainer.appendChild(phoneContainer);
 
     });
+
+    // stop toggle spinner
+    handleToggleSpinner(false);
 }
 
 
-// search handler
+// 3- search handler
 const handleSearch = () => {
+    handleToggleSpinner(true);
     const searchField = document.getElementById('search-input');
     const searchText = searchField.value;
     // validate search field
@@ -52,9 +56,15 @@ const handleSearch = () => {
 }
 
 
-// toggle spinner
+// 4- toggle spinner
 const handleToggleSpinner = (isLoading) => {
-    
+    const spinnerLoader = document.getElementById('spinner-loader');
+    if (isLoading) {
+        spinnerLoader.classList.remove('hidden');
+    }
+    else{
+        spinnerLoader.classList.add('hidden');
+    }
 }
 
 loadPhone();
