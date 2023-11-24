@@ -12,6 +12,34 @@
 
 <body>
 
+    <header class="text-center my-10 space-y-6 text-white p-5">
+        <h2 class="text-2xl lg:text-3xl xl:text-5xl">Find your phone, tab, watch with us !</h2>
+        <p class="text-xl text-blue-400">Available : Apple, Samsung, Huawei, Oppo</p>
+    </header>
+
+    <main>
+
+
+        <!-- search input -->
+        <div class="text-center p-5">
+            <input id="search-input" type="text" placeholder="Type here"
+                class="input input-bordered input-success w-full max-w-xs" />
+            <button onclick="handleSearch()" class="btn btn-outline btn-success my-4">Search</button>
+        </div>
+
+
+        <!-- display phones -->
+        <section>
+            <div id="phone-container"
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 p-14 text-black">
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+
+    </footer>
 
 
 
