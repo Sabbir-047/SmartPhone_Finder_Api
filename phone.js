@@ -1,6 +1,6 @@
 // fetch data
-const loadPhone = async () => {
-    const res = await fetch('https://openapi.programming-hero.com/api/phones?search=iphone');
+const loadPhone = async (searchPhone = '13') => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchPhone}`);
     const data = await res.json();
     const phones = data.data;
     // console.log(phones);
@@ -12,9 +12,12 @@ const displayPhones = (phones) => {
 
     const displayPhoneContainer = document.getElementById('phone-container');
 
+    // clear the page before loading another data
+    displayPhoneContainer.textContent = '';
+
     // show phones dynamically
     phones.forEach(phone => {
-        console.log(phone);
+        // console.log(phone);
         const phoneContainer = document.createElement('div');
         phoneContainer.innerHTML = `
         <div class="card bg-gray-100 shadow-xl">
@@ -37,5 +40,21 @@ const displayPhones = (phones) => {
 
 
 // search handler
+const handleSearch = () => {
+    const searchField = document.getElementById('search-input');
+    const searchText = searchField.value;
+    // validate search field
+    if (searchText === '') {
+        alert("Invalid Input. Please input valid words");
+        return loadPhone();
+    }
+    loadPhone(searchText);
+}
+
+
+// toggle spinner
+const handleToggleSpinner = (isLoading) => {
+    
+}
 
 loadPhone();
